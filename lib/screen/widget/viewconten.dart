@@ -15,13 +15,33 @@ class _ViewContenState extends State<ViewConten> {
       height: 323,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage("assets/images/img.png"),
           fit: BoxFit.cover,
         ),
       ),
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                width: 35,
+                height: 35,
+                child: InkWell(
+                  onTap: () {},
+                  child: const Icon(
+                    Icons.favorite_border,
+                    size: 25,
+                  ),
+                ),
+              ),
+            ),
+          ),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16.0),

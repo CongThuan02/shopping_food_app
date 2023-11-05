@@ -1,5 +1,8 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:shopping_food_app/config/route/route_imports.gr.dart';
 
 import '../widget/menubutton.dart';
 import '../widget/viewconten.dart';
@@ -45,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Icon(
-                        Icons.arrow_drop_down,
+                        Icons.expand_more,
                         color: Color.fromRGBO(126, 126, 126, 1),
                       )
                     ],
@@ -105,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                   name: 'Favorite',
                 ),
                 MenuButton(
-                  icon: Icons.tag,
+                  icon: Symbols.sell,
                   name: 'Cheap',
                 ),
                 MenuButton(
@@ -134,7 +137,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushRoute(const PromoPageRoute());
+                    },
                     child: const Text(
                       "See all",
                       style: TextStyle(

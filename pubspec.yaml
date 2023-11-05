@@ -42,6 +42,7 @@ dependencies:
   auto_route: ^6.4.0
   build_runner: ^2.4.6
   auto_route_generator: ^6.2.0
+  material_symbols_icons: ^4.2706.0
 
 dev_dependencies:
   flutter_test:
