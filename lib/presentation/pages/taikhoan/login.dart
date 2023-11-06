@@ -13,14 +13,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/img.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Container(),
+      body: Column(
+        children: [
+          Container(),
+        ],
       ),
     );
   }
