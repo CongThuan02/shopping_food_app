@@ -9,25 +9,21 @@ part 'signup_event.dart';
 part 'signup_state.dart';
 
 class SignupBloc extends Bloc<SignupEvent, SignupState> {
-  SignupBloc() : super(SignupState(isLoading: false)) {
+  String email;
+  String password;
+
+  SignupBloc(this.email, this.password) : super(SignupState(isLoading: true)) {
     on<SignupEvent>((event, emit) {});
     on<SignupEvented>((event, emit) => signUp(emit, event));
+    on<UpdateEmail>((event, emit) => updateEmail(emit, event));
+    on<UpdatePassword>((event, emit) => updatePassword(emit, event));
   }
 
   signUp(Emitter<SignupState> emit, SignupEvented event) async {
-    final String email = "";
-    final String password = "";
-    void updateEmail({required String email}) {
-      email = email;
-    }
-
-    void updatePassword({required String password}) {
-      password = password;
-    }
-
     emit(state.copyWith(isLoading: true));
     try {
-      UserCredential a = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential a =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -35,5 +31,13 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     } on FirebaseAuthException catch (e) {
       emit(state.copyWith(message: e.message, isLoading: false));
     }
+  }
+
+  updateEmail(Emitter<SignupState> emit, UpdateEmail event) {
+    email = event.email;
+  }
+
+  updatePassword(Emitter<SignupState> emit, UpdatePassword event) {
+    password = event.password;
   }
 }

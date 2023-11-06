@@ -12,7 +12,7 @@ class SignupState extends Equatable {
   });
 
   SignupState copyWith({
-    required final bool isLoading,
+    final bool? isLoading,
     final User? user,
     final String? message,
   }) {

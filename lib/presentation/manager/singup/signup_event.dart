@@ -9,12 +9,9 @@ class SignupEvent extends Equatable {
 }
 
 class SignupEvented extends SignupEvent {
-  final String email;
-  final String password;
+  SignupEvented();
 
-  SignupEvented(this.email, this.password);
-
-  List<Object?> get props => [email, password];
+  List<Object?> get props => [];
 }
 
 class UpdateEmail extends SignupEvent {
