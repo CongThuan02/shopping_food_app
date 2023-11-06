@@ -5,12 +5,15 @@ class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          page: HomePageRoute.page,
+          page: LoginScreenRoute.page,
           path: "/",
           initial: true,
         ),
         AutoRoute(
           page: PromoPageRoute.page,
+        ),
+        AutoRoute(
+          page: HomePageRoute.page,
         ),
       ];
 }
