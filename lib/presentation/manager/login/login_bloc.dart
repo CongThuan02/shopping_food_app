@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,7 +10,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   String email = "";
   String password = "";
 
-  LoginBloc() : super(const LoginState(isLoading: true)) {
+  LoginBloc() : super(LoginState()) {
     on<LoginEvent>((event, emit) {});
     on<UpdateEmail>(((event, emit) => updateEmail(emit, event)));
     on<UpdatePassword>(((event, emit) => updatePassword(emit, event)));
@@ -28,15 +26,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   login(Emitter<LoginState> emit, LoginEvented event) async {
-    emit(state.copyWith(isLoading: true));
+    emit(LoginLoading());
     try {
-      UserCredential a = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      emit(state.copyWith(user: a.user, isLoading: false));
+      emit(LoginSuccess(user: userCredential.user));
     } on FirebaseAuthException catch (e) {
-      emit(state.copyWith(message: e.message, isLoading: false));
+      emit(LoginSuccess(message: e.code));
     }
   }
 }

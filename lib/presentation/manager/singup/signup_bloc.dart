@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,8 +20,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   signUp(Emitter<SignupState> emit, SignupEvented event) async {
     emit(state.copyWith(isLoading: true));
     try {
-      UserCredential a =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential a = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );

@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -72,34 +71,19 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(
                       height: 12,
                     ),
-                    InputText(
-                      name: 'Confirm Password ',
-                      isPassword: true,
-                      onChanged: (value) {
-                        print(value);
-                      },
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text("Forgot Password"),
-                      ),
-                    ),
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
                           context.read<SignupBloc>().add(SignupEvented());
                         },
-                        child: const Text("Sign up"),
                         style: ElevatedButton.styleFrom(
-                          minimumSize:
-                              Size(MediaQuery.of(context).size.width, 50),
+                          minimumSize: Size(MediaQuery.of(context).size.width, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4),
                           ),
                           backgroundColor: Colors.blue[100],
                         ),
+                        child: const Text("Sign up"),
                       ),
                     ),
                     Row(

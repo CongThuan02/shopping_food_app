@@ -14,7 +14,6 @@ class _AddContenState extends State<AddConten> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     focus.dispose();
   }
@@ -25,6 +24,7 @@ class _AddContenState extends State<AddConten> {
 
   @override
   void initState() {
+    super.initState();
     controller.text = valueDefault;
   }
 
@@ -235,9 +235,7 @@ class _AddContenState extends State<AddConten> {
                             });
                           },
                           child: Container(
-                            decoration: BoxDecoration(
-                                color: const Color(0xFF1D2D50),
-                                borderRadius: BorderRadius.circular(4)),
+                            decoration: BoxDecoration(color: const Color(0xFF1D2D50), borderRadius: BorderRadius.circular(4)),
                             width: 82,
                             height: 36,
                             child: const Row(

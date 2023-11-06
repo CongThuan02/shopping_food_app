@@ -1,29 +1,21 @@
 part of 'login_bloc.dart';
 
 class LoginState extends Equatable {
-  final User? user;
-  final bool isLoading;
-  final String? message;
+  @override
+  List<Object?> get props => throw UnimplementedError();
+}
 
-  const LoginState({
+class LoginInit extends LoginState {}
+
+class LoginSuccess extends LoginState {
+  final User? user;
+  final String? message;
+  LoginSuccess({
     this.user,
-    required this.isLoading,
     this.message,
   });
-
-  LoginState copyWith({
-    final User? user,
-    final bool? isLoading,
-    final String? message,
-  }) {
-    return LoginState(
-      user: user ?? this.user,
-      isLoading: isLoading ?? this.isLoading,
-      message: message ?? this.message,
-    );
-  }
-
   @override
-  // TODO: implement props
-  List<Object?> get props => [user, isLoading, message];
+  List<Object?> get props => [user];
 }
+
+class LoginLoading extends LoginState {}

@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
 import 'package:shopping_food_app/presentation/pages/homepage/homepage.dart'
     as _i1;
 import 'package:shopping_food_app/presentation/pages/promopage/promo_page.dart'
@@ -24,9 +25,13 @@ abstract class $AppRouter extends _i5.RootStackRouter {
   @override
   final Map<String, _i5.PageFactory> pagesMap = {
     HomePageRoute.name: (routeData) {
+      final args = routeData.argsAs<HomePageRouteArgs>();
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomePage(),
+        child: _i1.HomePage(
+          key: args.key,
+          email: args.email,
+        ),
       );
     },
     LoginScreenRoute.name: (routeData) {
@@ -52,16 +57,40 @@ abstract class $AppRouter extends _i5.RootStackRouter {
 
 /// generated route for
 /// [_i1.HomePage]
-class HomePageRoute extends _i5.PageRouteInfo<void> {
-  const HomePageRoute({List<_i5.PageRouteInfo>? children})
-      : super(
+class HomePageRoute extends _i5.PageRouteInfo<HomePageRouteArgs> {
+  HomePageRoute({
+    _i6.Key? key,
+    required String email,
+    List<_i5.PageRouteInfo>? children,
+  }) : super(
           HomePageRoute.name,
+          args: HomePageRouteArgs(
+            key: key,
+            email: email,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HomePageRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i5.PageInfo<HomePageRouteArgs> page =
+      _i5.PageInfo<HomePageRouteArgs>(name);
+}
+
+class HomePageRouteArgs {
+  const HomePageRouteArgs({
+    this.key,
+    required this.email,
+  });
+
+  final _i6.Key? key;
+
+  final String email;
+
+  @override
+  String toString() {
+    return 'HomePageRouteArgs{key: $key, email: $email}';
+  }
 }
 
 /// generated route for

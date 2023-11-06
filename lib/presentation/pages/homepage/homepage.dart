@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -9,7 +8,8 @@ import '../../widgets/viewconten.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String email;
+  const HomePage({super.key, required this.email});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -37,17 +37,17 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: const Color.fromRGBO(232, 76, 79, 0.20),
                   ),
                   onPressed: () {},
-                  child: const Row(
+                  child: Row(
                     children: [
                       Text(
-                        "Jl . Jayakatwang no 301",
-                        style: TextStyle(
+                        widget.email,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: Color.fromRGBO(126, 126, 126, 1),
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.expand_more,
                         color: Color.fromRGBO(126, 126, 126, 1),
                       )
@@ -191,12 +191,9 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.home_outlined)),
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.shopping_bag_outlined)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_bag_outlined)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.person_2_outlined))
+            IconButton(onPressed: () {}, icon: const Icon(Icons.person_2_outlined))
           ],
         ),
       ),
