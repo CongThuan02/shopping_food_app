@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:shopping_food_app/entity/menu.dart';
-import 'package:shopping_food_app/screen/promopage/widget/contens.dart';
+import 'package:shopping_food_app/domain/entities/menu.dart';
+import 'package:shopping_food_app/presentation/pages/promopage/widget/contens.dart';
 
-import '../widget/buttontabbar.dart';
+import '../../widgets/buttontabbar.dart';
 
 @RoutePage()
 class PromoPage extends StatefulWidget {

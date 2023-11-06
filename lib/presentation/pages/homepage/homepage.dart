@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:shopping_food_app/config/route/route_imports.gr.dart';
 
-import '../widget/menubutton.dart';
-import '../widget/viewconten.dart';
+import '../../widgets/menubutton.dart';
+import '../../widgets/viewconten.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
