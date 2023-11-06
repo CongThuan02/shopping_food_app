@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_food_app/config/route/route_imports.gr.dart';
 import 'package:shopping_food_app/presentation/pages/taikhoan/widget/input_text.dart';
 
 @RoutePage()
@@ -67,7 +69,14 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Don’t have an account"),
-                TextButton(onPressed: () {}, child: Text("Sign Up"))
+                TextButton(
+                  onPressed: () {
+                    context.pushRoute(
+                      SignUpRoute(),
+                    );
+                  },
+                  child: Text("Sign Up"),
+                )
               ],
             ),
           ],
