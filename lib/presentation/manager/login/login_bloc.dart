@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_event.dart';
 
@@ -32,9 +33,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: email,
         password: password,
       );
+
+      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      sharedPreferences.setString("email", (userCredential.user?.email).toString());
+
       emit(LoginSuccess(user: userCredential.user));
     } on FirebaseAuthException catch (e) {
-      emit(LoginSuccess(message: e.code));
+      emit(LoginSuccess(message: "The Email or password is incorrect"));
     }
   }
 }

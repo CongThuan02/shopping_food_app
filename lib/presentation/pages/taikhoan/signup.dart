@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shopping_food_app/presentation/pages/taikhoan/widget/input_text.dart';
 
@@ -57,6 +58,7 @@ class _SignUpState extends State<SignUp> {
                       onChanged: (value) {
                         context.read<SignupBloc>().add(UpdateEmail(value));
                       },
+                      iconData: Symbols.email,
                     ),
                     const SizedBox(
                       height: 12,
@@ -67,6 +69,7 @@ class _SignUpState extends State<SignUp> {
                       onChanged: (value) {
                         context.read<SignupBloc>().add(UpdatePassword(value));
                       },
+                      iconData: Symbols.password,
                     ),
                     const SizedBox(
                       height: 12,
@@ -74,7 +77,7 @@ class _SignUpState extends State<SignUp> {
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          context.read<SignupBloc>().add(SignupEvented());
+                          context.read<SignupBloc>().add(const SignupEvented());
                         },
                         style: ElevatedButton.styleFrom(
                           minimumSize: Size(MediaQuery.of(context).size.width, 50),

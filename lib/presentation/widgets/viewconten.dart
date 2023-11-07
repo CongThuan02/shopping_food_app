@@ -27,9 +27,7 @@ class _ViewContenState extends State<ViewConten> {
             child: Align(
               alignment: Alignment.topRight,
               child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
                 width: 35,
                 height: 35,
                 child: InkWell(
@@ -45,19 +43,19 @@ class _ViewContenState extends State<ViewConten> {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Container(
+            child: SizedBox(
               width: 268,
               height: 101,
               child: Card(
                 color: Colors.white,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.only(top: 16.0, left: 16, bottom: 0),
+                  padding: const EdgeInsets.only(top: 16.0, left: 16, bottom: 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Title(
+                        color: const Color(0xFF3E4462),
                         child: const Text(
                           "Italian Pizza",
                           style: TextStyle(
@@ -66,7 +64,6 @@ class _ViewContenState extends State<ViewConten> {
                             color: Color(0xFF3E4462),
                           ),
                         ),
-                        color: const Color(0xFF3E4462),
                       ),
                       const Text(
                         "Delics Italian pizza with chess ",
@@ -102,7 +99,7 @@ class _ViewContenState extends State<ViewConten> {
                             padding: const EdgeInsets.only(right: 8.0),
                             child: InkWell(
                               onTap: () {
-                                print("Đã mua");
+                                //print("Đã mua");
                               },
                               child: Container(
                                 decoration: BoxDecoration(

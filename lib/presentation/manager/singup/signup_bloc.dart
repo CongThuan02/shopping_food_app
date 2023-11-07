@@ -10,7 +10,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   String email;
   String password;
 
-  SignupBloc(this.email, this.password) : super(SignupState(isLoading: true)) {
+  SignupBloc(this.email, this.password) : super(const SignupState(isLoading: true)) {
     on<SignupEvent>((event, emit) {});
     on<SignupEvented>((event, emit) => signUp(emit, event));
     on<UpdateEmail>((event, emit) => updateEmail(emit, event));

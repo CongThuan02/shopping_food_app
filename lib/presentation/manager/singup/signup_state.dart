@@ -5,7 +5,7 @@ class SignupState extends Equatable {
   final User? user;
   final String? message;
 
-  SignupState({
+  const SignupState({
     required this.isLoading,
     this.user,
     this.message,
@@ -24,6 +24,5 @@ class SignupState extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [isLoading, user];
 }

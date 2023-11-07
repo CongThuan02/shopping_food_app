@@ -57,7 +57,7 @@ class _PromoPageState extends State<PromoPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Container(
+                    child: SizedBox(
                       // color: Colors.white,
                       height: 50,
                       child: ListView(
@@ -69,7 +69,7 @@ class _PromoPageState extends State<PromoPage> {
                             ),
                             ButtonTabBar(
                               icon: menu[i].icon,
-                              name: "${menu[i].name}",
+                              name: menu[i].name,
                               isSelected: menu[i].isSelect,
                               onPressed: () {
                                 setState(

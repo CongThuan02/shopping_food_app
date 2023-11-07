@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopping_food_app/config/route/route_imports.gr.dart';
 
 import '../../../main.dart';
@@ -10,14 +11,34 @@ import '../../widgets/viewconten.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
-  final String email;
-  const HomePage({super.key, required this.email});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  String email = "";
+  final String action = "";
+  Future<void> getEmail() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final action = sharedPreferences.getString('email');
+    email = action.toString();
+  }
+
+  Future<void> logout() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.remove('email');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getEmail();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,53 +52,6 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 68,
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     ElevatedButton(
-            //       style: ElevatedButton.styleFrom(
-            //         backgroundColor: const Color.fromRGBO(232, 76, 79, 0.20),
-            //       ),
-            //       onPressed: () {},
-            //       child: Row(
-            //         children: [
-            //           Text(
-            //             widget.email,
-            //             style: const TextStyle(
-            //               fontSize: 16,
-            //               fontWeight: FontWeight.w400,
-            //               color: Color.fromRGBO(126, 126, 126, 1),
-            //             ),
-            //           ),
-            //           co
-            //nst Icon(
-            //             Icons.expand_more,
-            //             color: Color.fromRGBO(126, 126, 126, 1),
-            //           )
-            //         ],
-            //       ),
-            //     ),
-            //     InkWell(
-            //       onTap: () {
-            //         print("object");
-            //       },
-            //       child: Container(
-            //         width: 32,
-            //         height: 32,
-            //         decoration: ShapeDecoration(
-            //           color: const Color(0xFF1D2D50),
-            //           shape: RoundedRectangleBorder(
-            //             borderRadius: BorderRadius.circular(30),
-            //           ),
-            //         ),
-            //         child: const Icon(
-            //           Icons.notifications_none,
-            //           color: Colors.white,
-            //         ),
-            //       ),
-            //     )
-            //   ],
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -101,8 +75,8 @@ class _HomePageState extends State<HomePage> {
                           Icons.expand_more,
                           color: Color(0xFF7E7E7E),
                         ),
-                        hint: Text(widget.email),
-                        items: <String>[(widget.email), "LOGOUT"].map((String value) {
+                        hint: Text(email),
+                        items: <String>[(email), "LOGOUT"].map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
@@ -113,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                             await FirebaseAuth.instance.signOut();
                             runApp(MyApp());
                           }
+                          logout();
                         },
                       ),
                     ),
@@ -120,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 InkWell(
                   onTap: () {
-                    print("object");
+                    //  print("object");
                   },
                   child: Container(
                     width: 32,

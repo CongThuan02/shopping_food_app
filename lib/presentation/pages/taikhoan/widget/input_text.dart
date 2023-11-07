@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class InputText extends StatefulWidget {
   final String name;
-  final bool isPassword;
+  bool isPassword = false;
   final Function onChanged;
+  final IconData iconData;
+  final Function()? onTap;
 
-  const InputText(
-      {super.key,
-      required this.name,
-      required this.isPassword,
-      required this.onChanged});
+  InputText({
+    Key? key,
+    required this.name,
+    required this.isPassword,
+    required this.onChanged,
+    required this.iconData,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   State<InputText> createState() => _InputTextState();
@@ -25,20 +31,28 @@ class _InputTextState extends State<InputText> {
         Row(
           children: [
             Text(widget.name),
-            Text(
+            const Text(
               "*",
               style: TextStyle(color: Colors.red),
             )
           ],
         ),
-        Container(
+        SizedBox(
           height: 50,
           child: TextFormField(
             onChanged: (text) => widget.onChanged(text),
             obscureText: widget.isPassword,
             decoration: InputDecoration(
+              suffixIcon: InkWell(
+                onTap: () {
+                  setState(() {
+                    widget.isPassword = !widget.isPassword;
+                  });
+                },
+                child: Icon(widget.iconData),
+              ),
               hintText: widget.name,
-              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 10),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),

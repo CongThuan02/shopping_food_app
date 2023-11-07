@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 class ButtonTabBar extends StatefulWidget {
   final IconData icon;
@@ -7,12 +6,7 @@ class ButtonTabBar extends StatefulWidget {
   final bool isSelected;
   final Function()? onPressed;
 
-  const ButtonTabBar(
-      {super.key,
-      required this.icon,
-      required this.name,
-      required this.isSelected,
-      this.onPressed});
+  const ButtonTabBar({super.key, required this.icon, required this.name, required this.isSelected, this.onPressed});
 
   @override
   State<ButtonTabBar> createState() => _ButtonTabBarState();
@@ -23,10 +17,9 @@ class _ButtonTabBarState extends State<ButtonTabBar> {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor:
-              widget.isSelected == false ? Colors.white : Color(0xff1D2D50),
+          backgroundColor: widget.isSelected == false ? Colors.white : const Color(0xff1D2D50),
           elevation: 2,
-          minimumSize: Size(74, 10),
+          minimumSize: const Size(74, 10),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -36,17 +29,11 @@ class _ButtonTabBarState extends State<ButtonTabBar> {
           children: [
             Icon(
               widget.icon,
-              color:
-                  widget.isSelected == false ? Color(0xff3E4462) : Colors.white,
+              color: widget.isSelected == false ? const Color(0xff3E4462) : Colors.white,
             ),
             Text(
               " ${widget.name}",
-              style: TextStyle(
-                  color: widget.isSelected == false
-                      ? Color(0xff3E4462)
-                      : Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400),
+              style: TextStyle(color: widget.isSelected == false ? const Color(0xff3E4462) : Colors.white, fontSize: 12, fontWeight: FontWeight.w400),
             )
           ],
         ));
