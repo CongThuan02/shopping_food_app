@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:shopping_food_app/config/route/route_imports.gr.dart';
 
+import '../../../main.dart';
 import '../../widgets/menubutton.dart';
 import '../../widgets/viewconten.dart';
 
@@ -29,29 +31,91 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 68,
             ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     ElevatedButton(
+            //       style: ElevatedButton.styleFrom(
+            //         backgroundColor: const Color.fromRGBO(232, 76, 79, 0.20),
+            //       ),
+            //       onPressed: () {},
+            //       child: Row(
+            //         children: [
+            //           Text(
+            //             widget.email,
+            //             style: const TextStyle(
+            //               fontSize: 16,
+            //               fontWeight: FontWeight.w400,
+            //               color: Color.fromRGBO(126, 126, 126, 1),
+            //             ),
+            //           ),
+            //           co
+            //nst Icon(
+            //             Icons.expand_more,
+            //             color: Color.fromRGBO(126, 126, 126, 1),
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //     InkWell(
+            //       onTap: () {
+            //         print("object");
+            //       },
+            //       child: Container(
+            //         width: 32,
+            //         height: 32,
+            //         decoration: ShapeDecoration(
+            //           color: const Color(0xFF1D2D50),
+            //           shape: RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.circular(30),
+            //           ),
+            //         ),
+            //         child: const Icon(
+            //           Icons.notifications_none,
+            //           color: Colors.white,
+            //         ),
+            //       ),
+            //     )
+            //   ],
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(232, 76, 79, 0.20),
+                Container(
+                  height: 50,
+                  width: 238,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(34),
+                    color: const Color.fromRGBO(232, 76, 79, 0.20),
                   ),
-                  onPressed: () {},
-                  child: Row(
-                    children: [
-                      Text(
-                        widget.email,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DropdownButton(
+                        isDense: true,
                         style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Color.fromRGBO(126, 126, 126, 1),
+                          color: Color(0xFF7E7E7E),
                         ),
+                        borderRadius: BorderRadius.circular(10),
+                        icon: const Icon(
+                          Icons.expand_more,
+                          color: Color(0xFF7E7E7E),
+                        ),
+                        hint: Text(widget.email),
+                        items: <String>[(widget.email), "LOGOUT"].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (Object? value) async {
+                          if (value == "LOGOUT") {
+                            await FirebaseAuth.instance.signOut();
+                            runApp(MyApp());
+                          }
+                        },
                       ),
-                      const Icon(
-                        Icons.expand_more,
-                        color: Color.fromRGBO(126, 126, 126, 1),
-                      )
-                    ],
+                    ),
                   ),
                 ),
                 InkWell(
