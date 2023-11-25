@@ -102,6 +102,73 @@ class _ContensState extends State<Contens> {
                   const SizedBox(
                     height: 16,
                   ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Text(
+                  //       "Delics Italian Pizza",
+                  //       style: TextStyle(
+                  //         color: Color(0xFF3E4462),
+                  //         fontWeight: FontWeight.w500,
+                  //         fontSize: 18,
+                  //       ),
+                  //     ),
+                  //     // Row(
+                  //     //   children: [
+                  //     //     Icon(Icons.star_border),
+                  //     //     Text(
+                  //     //       "5.0",
+                  //     //       style: TextStyle(
+                  //     //         color: Color(0xFF3E4462),
+                  //     //         fontSize: 14,
+                  //     //         fontFamily: 'Poppins',
+                  //     //         fontWeight: FontWeight.w400,
+                  //     //         height: 0.10,
+                  //     //         letterSpacing: -0.24,
+                  //     //       ),
+                  //     //     ),
+                  //     //   ],
+                  //     // )
+                  //   ],
+                  // ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Text(
+                  //       "ZindaBa zar, Sylhet",
+                  //       style: TextStyle(
+                  //         color: Color(0xFF7E7E7E),
+                  //         fontSize: 14,
+                  //         fontFamily: 'Poppins',
+                  //         fontWeight: FontWeight.w400,
+                  //         height: 0.10,
+                  //         letterSpacing: -0.24,
+                  //       ),
+                  //     ),
+                  //     SizedBox(
+                  //       height: 8,
+                  //     ),
+                  //     Text(
+                  //       "1 Km",
+                  //       style: TextStyle(
+                  //         color: Color(0xFF7E7E7E),
+                  //         fontSize: 14,
+                  //         fontFamily: 'Poppins',
+                  //         fontWeight: FontWeight.w400,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // SizedBox(
+                  //   height: 16,
+                  // ),
+                  // Divider(
+                  //   thickness: 4,
+                  //   color: Color(0xFFEFEFF2),
+                  // ),
+                  // SizedBox(
+                  //   height: 16,
+                  // ),
                 ],
               ),
               const AddConten(),
