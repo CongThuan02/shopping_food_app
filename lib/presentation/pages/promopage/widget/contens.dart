@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_food_app/config/route/route_imports.gr.dart';
 
 import 'addconten.dart';
 
@@ -19,8 +21,8 @@ class _ContensState extends State<Contens> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(16.0),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
               Column(
@@ -28,15 +30,23 @@ class _ContensState extends State<Contens> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Delics Italian Pizza",
-                        style: TextStyle(
-                          color: Color(0xFF3E4462),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.all(0),
+                        ),
+                        onPressed: () {
+                          context.pushRoute(DetailRoute());
+                        },
+                        child: const Text(
+                          "Delics Italian Pizza",
+                          style: TextStyle(
+                            color: Color(0xFF3E4462),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
-                      Row(
+                      const Row(
                         children: [
                           Icon(Icons.star_border),
                           Text(
@@ -54,7 +64,7 @@ class _ContensState extends State<Contens> {
                       )
                     ],
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -82,23 +92,23 @@ class _ContensState extends State<Contens> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 4,
                     color: Color(0xFFEFEFF2),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                 ],
               ),
-              AddConten(),
-              SizedBox(
+              const AddConten(),
+              const SizedBox(
                 height: 26,
               ),
-              AddConten(),
+              const AddConten(),
             ],
           ),
         ),
