@@ -30,10 +30,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 listener: (context, state) {
                   if (state is LoginSuccess) {
                     if (state.message != null) {
-                      Alert(
-                        context: context,
-                        title: state.message,
-                      ).show();
+                      context.pushRoute(const HomePageRoute());
+                      // Alert(
+                      //   context: context,
+                      //   title: state.message,
+                      // ).show();
                     } else {
                       context.pushRoute(const HomePageRoute());
                     }
@@ -83,7 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           context.read<LoginBloc>().add(LoginEvented());
                         },
                         style: ElevatedButton.styleFrom(
-                          minimumSize: Size(MediaQuery.of(context).size.width, 50),
+                          minimumSize:
+                              Size(MediaQuery.of(context).size.width, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4),
                           ),
